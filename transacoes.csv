@@ -19,5 +19,5 @@ id,data,cliente_id,tipo,valor,descricao,categoria
 18,2026-13-01,CLI002,debito,100.00,Data inválida,compra
 19,2026-02-10,CLI001,entrada,500.00,Tipo inválido,compra
 20,2026-03-05,CLI002,debito,0,Valor zero,compra
-21,xyz,2026-03-06,CLI003,credito,200.00,ID inválido,salario
+xyz,2026-03-06,CLI003,credito,200.00,ID inválido,salario
 22,2026-03-07,CLI001,credito,-50.00,Valor negativo,salario
