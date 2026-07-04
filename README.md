@@ -1,57 +1,57 @@
-# ftr-dados-python
+# ClearBank — Análise de Transações
 
-Notebook Python para leitura, validação e análise de transações bancárias a partir de CSV.
-
-## Sobre o desafio
-
-Desenvolver um notebook que:
-
-1. **Lê e valida** um arquivo CSV de transações bancárias
-2. **Agrupa** os dados por mês
-3. **Calcula métricas** financeiras
-4. **Sinaliza** movimentações relevantes
-5. **Exporta** o resultado em JSON
-
-## Estrutura do projeto
-
-```
-ftr-dados-python/
-├── data/
-│   └── transacoes.csv      # CSV de entrada (exemplo)
-├── notebooks/
-│   └── analise_transacoes.ipynb
-├── output/                 # JSON gerado pelo notebook
-├── requirements.txt
-└── README.md
-```
-
-## Formato esperado do CSV
-
-| Coluna     | Tipo   | Descrição                          |
-|------------|--------|------------------------------------|
-| `data`     | date   | Data da transação (`YYYY-MM-DD`)   |
-| `descricao`| string | Descrição da movimentação          |
-| `valor`    | float  | Valor (positivo = crédito, negativo = débito) |
-| `categoria`| string | Categoria da transação (opcional)  |
+Projeto do desafio final do módulo de Python para análise de dados. O notebook lê transações bancárias de um CSV, valida e limpa os dados, calcula métricas financeiras mensais, identifica transações suspeitas e exporta um relatório em JSON.
 
 ## Como executar
 
+1. Clone o repositório e entre na pasta do projeto.
+2. Crie o ambiente virtual (opcional) e instale as dependências:
+
 ```bash
-# Criar ambiente virtual (recomendado)
 python -m venv .venv
-source .venv/bin/activate   # macOS/Linux
-
-# Instalar dependências
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# Abrir o notebook
-jupyter notebook notebooks/analise_transacoes.ipynb
 ```
 
-## Saída esperada (JSON)
+3. Certifique-se de que o arquivo `transacoes.csv` está na raiz do projeto.
+4. Abra o notebook no Jupyter ou Google Colab:
 
-O notebook deve gerar um arquivo em `output/resultado.json` com, no mínimo:
+```bash
+jupyter notebook desafio-final.ipynb
+```
 
-- Resumo por mês (totais de crédito, débito, saldo)
-- Métricas financeiras consolidadas
-- Lista de movimentações sinalizadas (alertas)
+5. Execute todas as células em ordem, da primeira à última.
+
+## Arquivos de entrada e saída
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `transacoes.csv` | Histórico de transações exportado pela ClearBank |
+| `relatorio.json` | Relatório gerado pelo notebook com métricas e suspeitas |
+| `grafico.png` | Gráfico de saldo mensal (requisito opcional) |
+
+## O que o notebook faz
+
+- Lê o CSV com o módulo nativo `csv` (sem pandas na solução principal)
+- Valida cada linha e descarta registros inválidos silenciosamente
+- Agrupa transações por mês e calcula créditos, débitos, saldo, média e extremos
+- Identifica transações com valor acima de R$ 10.000,00 como suspeitas
+- Exibe um relatório formatado no terminal
+- Salva o resultado em `relatorio.json`
+
+## Requisitos opcionais
+
+- `analise_pandas.py` — versão alternativa usando pandas para comparação
+- `grafico.png` — gráfico de barras com saldo mensal gerado com matplotlib
+
+## Estrutura do repositório
+
+```
+clearbank-analise/
+├── desafio-final.ipynb
+├── transacoes.csv
+├── relatorio.json
+├── analise_pandas.py
+├── grafico.png
+└── README.md
+```
